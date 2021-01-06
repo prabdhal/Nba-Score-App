@@ -1,0 +1,55 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --primaryColor: rgb(0, 0, 0);
+  --secondaryColor: #ffffff;
+  --complementaryColor: rgb(151, 151, 151);
+  --largeFont: 1.5rem;
+  --mediumFont: 1.3rem;
+  --regularFont: 1rem;
+  --smallFont: 0.9rem;
+  --smallerFont: 0.8rem;
+  --navPadding: 30px 15px;
+  --smallverticalSpacing: 10px 0;
+  --mediumverticalSpacing: 20px 0;
+  --largeverticalSpacing: 30px 0;
+  --gutter: 20px;
+  --logoSize: 50px;
+}
+
+.main-bg {
+  height: 100vh;
+  background-color: var(--primaryColor);
+}
+
+.center {
+  width: 90%;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+}
+
+.container-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 2px solid var(--primaryColor);
+  padding: 20px;
+  margin: 20px;
+}
+
+.w-500 {
+  max-width: 500px;
+}
+.p-20 {
+  padding: 20px;
+}
+
+@import "Nav";
+@import "Players";
+@import "Team";
+@import "Game";

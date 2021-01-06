@@ -1,0 +1,413 @@
+@charset "UTF-8";
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --primaryColor: rgb(0, 0, 0);
+  --secondaryColor: #ffffff;
+  --complementaryColor: rgb(151, 151, 151);
+  --largeFont: 1.5rem;
+  --mediumFont: 1.3rem;
+  --regularFont: 1rem;
+  --smallFont: 0.9rem;
+  --smallerFont: 0.8rem;
+  --navPadding: 30px 15px;
+  --smallverticalSpacing: 10px 0;
+  --mediumverticalSpacing: 20px 0;
+  --largeverticalSpacing: 30px 0;
+  --gutter: 20px;
+  --logoSize: 50px;
+}
+
+.main-bg {
+  height: 100vh;
+  background-color: var(--primaryColor);
+}
+
+.center {
+  width: 90%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  margin: auto;
+}
+
+.container-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border: 2px solid var(--primaryColor);
+  padding: 20px;
+  margin: 20px;
+}
+
+.w-500 {
+  max-width: 500px;
+}
+
+.p-20 {
+  padding: 20px;
+}
+
+.nav {
+  width: 100%;
+  height: 75px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: auto;
+  padding: 10px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: var(--primaryColor);
+}
+
+.nav-logo {
+  text-align: center;
+  margin: auto 0;
+}
+
+.nav-btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.nav-btn {
+  width: 100%;
+  height: 60px;
+  width: 75px;
+  padding: 5px;
+  background-color: var(--secondaryColor);
+  outline: 0;
+  border: 0;
+  margin: 4px 2px;
+  border-right: 2px solid black;
+  border-left: 2px solid black;
+  border-top: 2px solid black;
+}
+
+form {
+  margin: 50px auto;
+  text-align: center;
+}
+
+input {
+  padding: 5px;
+}
+
+input[type="text"] {
+  font-size: 1rem;
+}
+
+.select-box {
+  padding: 5px;
+}
+
+.btn {
+  padding: 5px;
+}
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+  height: 80px;
+}
+
+.player-information-container {
+  text-align: left;
+  padding: 5px 0;
+}
+
+.player-name-text {
+  font-size: var(--mediumFont);
+}
+
+.player-information-text {
+  font-size: var(--regularFont);
+}
+
+.basic-stats {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-size: var(--smallFont);
+  margin: auto;
+  color: white;
+  background-color: var(--primaryColor);
+  border: 2px solid var(--primaryColor);
+  overflow-x: scroll;
+}
+
+.stat-container {
+  padding: 15px 10px;
+  margin: auto;
+  font-weight: 600;
+}
+
+.basic-stats-header {
+  text-align: center;
+  font-size: var(--smallFont);
+  color: var(--complementaryColor);
+  margin: auto;
+}
+
+::-webkit-scrollbar {
+  height: 7px;
+  /* height of horizontal scrollbar ← You're missing this */
+  width: 5px;
+  border: 1px solid var(--secondaryColor);
+  background-color: var(--secondaryColor);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  background-color: var(--primaryColor);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  border: 1px solid var(--secondaryColor);
+  background-color: var(--secondaryColor);
+  border-radius: 10px;
+}
+
+.players-list {
+  border: 2px solid black;
+}
+
+.team-player {
+  border: 1px solid black;
+  margin: 10px 0;
+}
+
+.games-today {
+  gap: 20px;
+}
+
+.game-block {
+  max-width: 550px;
+  height: 150px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: lightblue;
+  border: 2px solid black;
+  padding: 20px;
+  margin: 20px auto;
+}
+
+.team-score-block {
+  width: 200px;
+}
+
+.game-status {
+  width: 100px;
+  padding: 0 10px;
+}
+
+.team-logo {
+  width: var(--logoSize);
+  height: var(--logoSize);
+}
+
+.team-name-text {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.team-score {
+  padding: 10px 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.hawks {
+  background: url("../imgs/hawks.png") no-repeat;
+  background-size: cover;
+}
+
+.celtics {
+  background: url("../imgs/celtics.png") no-repeat;
+  background-size: cover;
+}
+
+.nets {
+  background: url("../imgs/nets.png") no-repeat;
+  background-size: cover;
+}
+
+.hornets {
+  background: url("../imgs/hornets.png") no-repeat;
+  background-size: cover;
+}
+
+.bulls {
+  background: url("../imgs/bulls.png") no-repeat;
+  background-size: cover;
+}
+
+.cavaliers {
+  background: url("../imgs/cavaliers.png") no-repeat;
+  background-size: cover;
+}
+
+.mavericks {
+  background: url("../imgs/mavericks.png") no-repeat;
+  background-size: cover;
+}
+
+.nuggets {
+  background: url("../imgs/nuggets.png") no-repeat;
+  background-size: cover;
+}
+
+.pistons {
+  background: url("../imgs/pistons.png") no-repeat;
+  background-size: cover;
+}
+
+.warriors {
+  background: url("../imgs/warriors.png") no-repeat;
+  background-size: cover;
+}
+
+.rockets {
+  background: url("../imgs/rockets.png") no-repeat;
+  background-size: cover;
+}
+
+.pacers {
+  background: url("../imgs/pacers.png") no-repeat;
+  background-size: cover;
+}
+
+.clippers {
+  background: url("../imgs/clippers.png") no-repeat;
+  background-size: cover;
+}
+
+.lakers {
+  background: url("../imgs/lakers.png") no-repeat;
+  background-size: cover;
+}
+
+.grizzlies {
+  background: url("../imgs/grizzlies.png") no-repeat;
+  background-size: cover;
+}
+
+.heat {
+  background: url("../imgs/heat.png") no-repeat;
+  background-size: cover;
+}
+
+.bucks {
+  background: url("../imgs/bucks.png") no-repeat;
+  background-size: cover;
+}
+
+.timberwolves {
+  background: url("../imgs/timberwolves.png") no-repeat;
+  background-size: cover;
+}
+
+.pelicans {
+  background: url("../imgs/pelicans.png") no-repeat;
+  background-size: cover;
+}
+
+.knicks {
+  background: url("../imgs/knicks.png") no-repeat;
+  background-size: cover;
+}
+
+.thunder {
+  background: url("../imgs/thunder.png") no-repeat;
+  background-size: cover;
+}
+
+.magic {
+  background: url("../imgs/magic.png") no-repeat;
+  background-size: cover;
+}
+
+.sixers {
+  background: url("../imgs/sixers.png") no-repeat;
+  background-size: cover;
+}
+
+.suns {
+  background: url("../imgs/suns.png") no-repeat;
+  background-size: cover;
+}
+
+.blazers {
+  background: url("../imgs/trailblazers.png") no-repeat;
+  background-size: cover;
+}
+
+.kings {
+  background: url("../imgs/kings.png") no-repeat;
+  background-size: cover;
+}
+
+.spurs {
+  background: url("../imgs/spurs.png") no-repeat;
+  background-size: cover;
+}
+
+.raptors {
+  background: url("../imgs/raptors.png") no-repeat;
+  background-size: cover;
+}
+
+.jazz {
+  background: url("../imgs/jazz.png") no-repeat;
+  background-size: cover;
+}
+
+.wizards {
+  background: url("../imgs/wizards.png") no-repeat;
+  background-size: cover;
+}
+/*# sourceMappingURL=style.css.map */

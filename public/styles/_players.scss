@@ -1,0 +1,82 @@
+form {
+  margin: 50px auto;
+  text-align: center;
+}
+
+input {
+  padding: 5px;
+}
+
+input[type="text"] {
+  font-size: 1rem;
+}
+
+.select-box {
+  padding: 5px;
+}
+
+.btn {
+  padding: 5px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 80px;
+}
+
+.player-information-container {
+  text-align: left;
+  padding: 5px 0;
+}
+
+.player-name-text {
+  font-size: var(--mediumFont);
+}
+
+.player-information-text {
+  font-size: var(--regularFont);
+}
+
+.basic-stats {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  font-size: var(--smallFont);
+  margin: auto;
+  color: white;
+  background-color: var(--primaryColor);
+  border: 2px solid var(--primaryColor);
+  overflow-x: scroll;
+}
+
+.stat-container {
+  padding: 15px 10px;
+  margin: auto;
+  font-weight: 600;
+}
+
+.basic-stats-header {
+  text-align: center;
+  font-size: var(--smallFont);
+  color: var(--complementaryColor);
+  margin: auto;
+}
+
+::-webkit-scrollbar {
+  height: 7px; /* height of horizontal scrollbar ← You're missing this */
+  width: 5px;
+  border: 1px solid var(--secondaryColor);
+  background-color: var(--secondaryColor);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:horizontal {
+  background-color: var(--primaryColor);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:vertical {
+  border: 1px solid var(--secondaryColor);
+  background-color: var(--secondaryColor);
+  border-radius: 10px;
+}
