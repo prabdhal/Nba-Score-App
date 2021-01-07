@@ -15,7 +15,6 @@ class App extends Component {
   }
 
   hideComponent = (name) => {
-    console.log(name);
     switch (name) {
       case "showHidePlayer":
         this.setState({
@@ -47,6 +46,24 @@ class App extends Component {
     }
   };
 
+  toggleGameBtn = (state) => {
+    let classes = "nav-btn ";
+    if (state === false) return classes;
+    return classes + "selected";
+  };
+
+  toggleTeamBtn = (state) => {
+    let classes = "nav-btn ";
+    if (state === false) return classes;
+    return classes + "selected";
+  };
+
+  togglePlayerBtn = (state) => {
+    let classes = "nav-btn ";
+    if (state === false) return classes;
+    return classes + "selected";
+  };
+
   render() {
     const { showHidePlayer, showHideTeam, showHideGame } = this.state;
     return (
@@ -55,25 +72,26 @@ class App extends Component {
           <h3 className="nav-logo">Basketball Score App</h3>
           <div className="nav-btns">
             <button
-              className="nav-btn"
+              className={this.toggleGameBtn(this.state.showHideGame)}
               onClick={() => this.hideComponent("showHideGame")}
             >
               Game
             </button>
             <button
-              className="nav-btn"
+              className={this.togglePlayerBtn(this.state.showHidePlayer)}
               onClick={() => this.hideComponent("showHidePlayer")}
             >
               Player
             </button>
             <button
-              className="nav-btn"
+              className={this.toggleTeamBtn(this.state.showHideTeam)}
               onClick={() => this.hideComponent("showHideTeam")}
             >
               Team
             </button>
           </div>
         </nav>
+
         {showHidePlayer && <Player />}
         {showHideTeam && <Team />}
         {showHideGame && <Game />}

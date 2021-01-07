@@ -5,8 +5,8 @@
 }
 
 :root {
-  --primaryColor: rgb(0, 0, 0);
-  --secondaryColor: #ffffff;
+  --primaryColor: lightblue;
+  --secondaryColor: lightgrey;
   --complementaryColor: rgb(151, 151, 151);
   --largeFont: 1.5rem;
   --mediumFont: 1.3rem;
@@ -21,9 +21,16 @@
   --logoSize: 50px;
 }
 
+.App {
+  height: 100%;
+  overflow-y: hidden;
+  background-color: var(--primaryColor);
+}
+
 .main-bg {
   height: 100vh;
-  background-color: var(--primaryColor);
+  background-color: var(--secondaryColor);
+  overflow-y: hidden;
 }
 
 .center {

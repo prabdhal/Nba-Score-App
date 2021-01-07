@@ -6,7 +6,7 @@
   margin: auto;
   padding: 10px;
   justify-content: space-between;
-  background-color: var(--primaryColor);
+  background-color: var(--secondaryColor);
 }
 
 .nav-logo {
@@ -17,6 +17,7 @@
 .nav-btns {
   display: flex;
   flex-direction: row;
+  margin-top: 1px;
 }
 
 .nav-btn {
@@ -24,11 +25,20 @@
   height: 60px;
   width: 75px;
   padding: 5px;
-  background-color: var(--secondaryColor);
+  background-color: var(--primaryColor);
   outline: 0;
   border: 0;
   margin: 4px 2px;
-  border-right: 2px solid black;
-  border-left: 2px solid black;
-  border-top: 2px solid black;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+  cursor: pointer;
+}
+
+.nav-btn:hover {
+  background-color: cyan;
+}
+
+.selected {
+  background-color: cyan;
 }
