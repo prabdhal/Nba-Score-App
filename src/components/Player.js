@@ -8,9 +8,7 @@ class Player extends Component {
     super(props);
     this.state = {
       playerBaseData: {},
-      playerTeamInfo: {},
       playerId: null,
-      playerName: null,
       season: "2020",
       playerStats: {},
       activePlayersId: [{}],
@@ -18,7 +16,7 @@ class Player extends Component {
     };
   }
 
-  // finds player when form is submitted
+  // gets player id when form is submitted
   handleSubmit = (e) => {
     e.preventDefault();
     this.getPlayerId();
@@ -58,14 +56,6 @@ class Player extends Component {
           this.setState({ playerId: res.data.data[0].id });
           this.setState({ playerBaseData: res.data.data[0] });
           this.getPlayerStats(res.data.data[0].id);
-          // get the players full name
-          let fullName =
-            res.data.data[0].first_name + " " + res.data.data[0].last_name;
-          console.log(fullName);
-          this.setState({
-            playerName: fullName,
-          });
-          this.state.playerTeamInfo = res.data.data[0].team;
         }
       })
       .catch((err) => {
@@ -91,114 +81,6 @@ class Player extends Component {
           `${this.state.playerName} was not active during the ${this.state.season} season`
         );
       });
-  };
-
-  renderSeason = (playerStats) => {
-    if (isNaN(parseInt(playerStats.season))) return "-";
-
-    return playerStats.season + " - " + (parseInt(playerStats.season) + 1);
-  };
-
-  renderGamesPlayed = (playerStats) => {
-    if (isNaN(parseFloat(playerStats.games_played))) return "-";
-
-    return playerStats.games_played.toFixed(0);
-  };
-
-  renderMinutes = (playerStats) => {
-    if (isNaN(parseFloat(playerStats.min))) return "-";
-
-    return playerStats.min;
-  };
-
-  renderPoints = (playerStats) => {
-    if (isNaN(parseFloat(playerStats.pts))) return "-";
-
-    return (playerStats.pts * 1).toFixed(1);
-  };
-
-  renderRebounds = (playerStats) => {
-    if (isNaN(parseFloat(playerStats.reb))) return "-";
-
-    return (playerStats.reb * 1).toFixed(1);
-  };
-
-  renderAssists = (playerStats) => {
-    if (isNaN(parseFloat(playerStats.ast))) return "-";
-
-    return (playerStats.ast * 1).toFixed(1);
-  };
-
-  renderSteals = (playerStats) => {
-    if (isNaN(parseFloat(playerStats.stl))) return "-";
-
-    return (playerStats.stl * 1).toFixed(1);
-  };
-
-  renderBlocks = (playerStats) => {
-    if (isNaN(parseFloat(playerStats.blk))) return "-";
-
-    return (playerStats.blk * 1).toFixed(1);
-  };
-
-  renderTurnovers = (playerStats) => {
-    if (isNaN(parseFloat(playerStats.turnover))) return "-";
-
-    return (playerStats.turnover * 1).toFixed(1);
-  };
-
-  renderFreethrowMade = (playerStats) => {
-    if (isNaN(parseFloat(playerStats.ftm))) return "-";
-
-    return (playerStats.ftm * 100).toFixed(0);
-  };
-
-  renderFreethrowAttempts = (playerStats) => {
-    if (isNaN(parseFloat(playerStats.fta))) return "-";
-
-    return (playerStats.fta * 100).toFixed(0);
-  };
-
-  renderFreethrowPct = (playerStats) => {
-    if (isNaN(parseFloat(playerStats.ft_pct))) return "-";
-
-    return (playerStats.ft_pct * 100).toFixed(1);
-  };
-
-  renderFieldGoalMade = (playerStats) => {
-    if (isNaN(parseFloat(playerStats.fgm))) return "-";
-
-    return (playerStats.fgm * 100).toFixed(0);
-  };
-
-  renderFieldGoalAttempts = (playerStats) => {
-    if (isNaN(parseFloat(playerStats.fga))) return "-";
-
-    return (playerStats.fga * 100).toFixed(0);
-  };
-
-  renderFieldGoalPct = (playerStats) => {
-    if (isNaN(parseFloat(playerStats.fg_pct))) return "-";
-
-    return (playerStats.fg_pct * 100).toFixed(1);
-  };
-
-  renderThreePointMade = (playerStats) => {
-    if (isNaN(parseFloat(playerStats.fg3m))) return "-";
-
-    return (playerStats.fg3m * 100).toFixed(0);
-  };
-
-  renderThreePointAttempts = (playerStats) => {
-    if (isNaN(parseFloat(playerStats.fg3a))) return "-";
-
-    return (playerStats.fg3a * 100).toFixed(0);
-  };
-
-  renderThreePointPct = (playerStats) => {
-    if (isNaN(parseFloat(playerStats.fg3_pct))) return "-";
-
-    return (playerStats.fg3_pct * 100).toFixed(1);
   };
 
   render() {
@@ -273,83 +155,7 @@ class Player extends Component {
           <PlayerBaseInfo playerBaseData={this.state.playerBaseData} />
 
           <div className="basic-stats">
-            <div className="stat-container">
-              <h5 className="basic-stats-header">SEASON</h5>
-              {this.renderSeason(this.state.playerStats)}
-            </div>
-            <div className="stat-container">
-              <h5 className="basic-stats-header">GP</h5>{" "}
-              {this.renderGamesPlayed(this.state.playerStats)}
-            </div>
-            <div className="stat-container">
-              <h5 className="basic-stats-header">MPG</h5>{" "}
-              {this.renderMinutes(this.state.playerStats)}
-            </div>
-            <div className="stat-container">
-              <h5 className="basic-stats-header">PPG</h5>{" "}
-              {this.renderPoints(this.state.playerStats)}
-            </div>
-            <div className="stat-container">
-              <h5 className="basic-stats-header">RPG</h5>{" "}
-              {this.renderRebounds(this.state.playerStats)}
-            </div>
-            <div className="stat-container">
-              {" "}
-              <h5 className="basic-stats-header">APG</h5>{" "}
-              {this.renderAssists(this.state.playerStats)}
-            </div>
-            <div className="stat-container">
-              {" "}
-              <h5 className="basic-stats-header">SPG</h5>{" "}
-              {this.renderSteals(this.state.playerStats)}
-            </div>
-            <div className="stat-container">
-              <h5 className="basic-stats-header">BPG</h5>{" "}
-              {this.renderBlocks(this.state.playerStats)}
-            </div>
-            <div className="stat-container">
-              <h5 className="basic-stats-header">TOs</h5>{" "}
-              {this.renderTurnovers(this.state.playerStats)}
-            </div>
-            <div className="stat-container">
-              <h5 className="basic-stats-header">FGM</h5>{" "}
-              {this.renderFreethrowMade(this.state.playerStats)}
-            </div>
-            <div className="stat-container">
-              <h5 className="basic-stats-header">FGA</h5>{" "}
-              {this.renderFreethrowAttempts(this.state.playerStats)}
-            </div>
-            <div className="stat-container">
-              <h5 className="basic-stats-header">FG%</h5>{" "}
-              {this.renderFieldGoalPct(this.state.playerStats)}
-            </div>
-            <div className="stat-container">
-              {" "}
-              <h5 className="basic-stats-header">3PTM</h5>{" "}
-              {this.renderThreePointMade(this.state.playerStats)}
-            </div>
-            <div className="stat-container">
-              {" "}
-              <h5 className="basic-stats-header">3PTA</h5>{" "}
-              {this.renderThreePointAttempts(this.state.playerStats)}
-            </div>
-            <div className="stat-container">
-              {" "}
-              <h5 className="basic-stats-header">3PT%</h5>{" "}
-              {this.renderThreePointPct(this.state.playerStats)}
-            </div>
-            <div className="stat-container">
-              <h5 className="basic-stats-header">FTM</h5>{" "}
-              {this.renderFreethrowMade(this.state.playerStats)}
-            </div>
-            <div className="stat-container">
-              <h5 className="basic-stats-header">FTA</h5>{" "}
-              {this.renderFreethrowAttempts(this.state.playerStats)}
-            </div>
-            <div className="stat-container">
-              <h5 className="basic-stats-header">FT%</h5>{" "}
-              {this.renderFreethrowPct(this.state.playerStats)}
-            </div>
+            <PlayerStats playerStats={this.state.playerStats} />
           </div>
         </div>
       </div>
