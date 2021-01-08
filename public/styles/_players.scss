@@ -26,6 +26,11 @@ input[type="text"] {
   height: 80px;
 }
 
+.spaced-row {
+  display: flex;
+  justify-content: space-between;
+}
+
 .player-information-container {
   text-align: left;
   padding: 5px 10px;

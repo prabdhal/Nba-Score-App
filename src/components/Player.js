@@ -9,7 +9,7 @@ class Player extends Component {
     this.state = {
       playerName: null,
       season: "2020",
-      activePlayersIdList: [[]],
+      activePlayersList: [],
     };
   }
 
@@ -37,7 +37,6 @@ class Player extends Component {
   };
 
   getPlayerInformation = () => {
-    console.log("Runnning get player Info");
     axios
       .get(
         `https://www.balldontlie.io/api/v1/players?search=${this.state.playerName}`
@@ -46,6 +45,7 @@ class Player extends Component {
         // get all neccessary player data
         let data = res.data.data;
         let newPlayerId = res.data.data[0].id;
+        if (this.checkPlayerExistenceInList(newPlayerId)) return;
         let newPlayerInfo = res.data.data[0];
         await this.getPlayerStats(newPlayerId)
           .then((res) => {
@@ -73,23 +73,18 @@ class Player extends Component {
       });
   };
 
-  addPlayerToList = (playerId, playerInfo, playerStats) => {
-    // filter out duplicates
-    const newPlayerIdList = this.state.activePlayersIdList.filter(
-      (id) => id !== playerId
-    );
-    this.setState({
-      activePlayersIdList: [
-        ...newPlayerIdList,
-        { id: playerId, info: playerInfo, stats: playerStats },
-      ],
+  checkPlayerExistenceInList = (id) => {
+    let playerExists = false;
+    this.state.activePlayersList.find((player) => {
+      if (player.id === id && "" + player.stats.season === this.state.season) {
+        playerExists = true;
+      }
     });
-    console.log(this.state.activePlayersIdList);
+    if (playerExists) return true;
+    return false;
   };
 
   getPlayerStats = (playerId) => {
-    console.log(this.state.season);
-    console.log(playerId);
     return Promise.resolve(
       axios
         .get(
@@ -110,6 +105,26 @@ class Player extends Component {
           return null;
         })
     );
+  };
+
+  addPlayerToList = (playerId, playerInfo, playerStats) => {
+    // filter out duplicates
+    const newPlayersList = [...this.state.activePlayersList];
+    console.log(this.state.activePlayersList);
+    this.setState({
+      activePlayersList: [
+        ...newPlayersList,
+        { id: playerId, info: playerInfo, stats: playerStats },
+      ],
+    });
+  };
+
+  removePlayerFromList = (id, season) => {
+    const newPlayerList = [...this.state.activePlayersList].filter(
+      (player) => player.id !== id
+    );
+
+    this.setState({ activePlayersList: newPlayerList });
   };
 
   render() {
@@ -181,11 +196,15 @@ class Player extends Component {
         </form>
 
         <div className="player-container">
-          {this.state.activePlayersIdList.map((player) => {
+          {this.state.activePlayersList.map((player) => {
             return (
               <React.Fragment>
                 {console.log(player)}
-                <PlayerBaseInfo key={player.id} player={player} />
+                <PlayerBaseInfo
+                  key={player.id}
+                  player={player}
+                  removePlayerFromList={this.removePlayerFromList}
+                />
                 <div className="basic-stats">
                   <PlayerStats key={player.id} player={player} />
                 </div>

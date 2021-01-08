@@ -2,11 +2,9 @@ import React from "react";
 
 function PlayerStats({ player }) {
   function renderSeason(playerStats) {
-    console.log(playerStats);
     if (playerStats === null || playerStats === undefined) return;
     if (isNaN(parseInt(playerStats.season))) return "-";
 
-    console.log(playerStats.stats);
     return playerStats.season + " - " + (parseInt(playerStats.season) + 1);
   }
 

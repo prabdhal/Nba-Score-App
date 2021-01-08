@@ -1,9 +1,9 @@
 import React from "react";
 
-function PlayerBaseInfo({ player }) {
+function PlayerBaseInfo({ player, removePlayerFromList }) {
   function renderPlayerImg(playerData) {
     if (playerData === null || playerData === undefined) return "-";
-    console.log(playerData);
+
     let fName = playerData.first_name;
     let lName = playerData.last_name;
     let imgUrl = `https://nba-players.herokuapp.com/players/${lName}/${fName}`;
@@ -32,16 +32,29 @@ function PlayerBaseInfo({ player }) {
     return playerData.team.abbreviation;
   }
 
+  function handleCloseButton(id, season) {
+    removePlayerFromList(id, season);
+  }
+
   return (
-    <div className="player-information-container">
-      {renderPlayerImg(player.info)}
-      <h4 className="player-name-text">{renderName(player.info)}</h4>
-      <span>
-        <h5 className="player-information-text">
-          Position: {renderPosition(player.info)} | Team:{" "}
-          {renderTeam(player.info)}
-        </h5>
-      </span>
+    <div className="player-information-container spaced-row">
+      <div>
+        {renderPlayerImg(player.info)}
+        <h4 className="player-name-text">{renderName(player.info)}</h4>
+        <span>
+          <h5 className="player-information-text">
+            Position: {renderPosition(player.info)} | Team:{" "}
+            {renderTeam(player.info)}
+          </h5>
+        </span>
+      </div>
+      <div>
+        <button
+          onClick={() => handleCloseButton(player.id, player.stats.season)}
+        >
+          Close
+        </button>
+      </div>
     </div>
   );
 }

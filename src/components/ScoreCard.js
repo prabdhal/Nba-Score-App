@@ -121,6 +121,22 @@ function ScoreCard({ gameInfo }) {
     }
   }
 
+  function toggleScoreClass(game, isHome) {
+    let classes = "team-score ";
+    if (game.status === "Final") {
+      if (isHome && game.home_team_score > game.visitor_team_score) {
+        return (classes += "green");
+      } else if (isHome && game.home_team_score < game.visitor_team_score) {
+        return (classes += "red");
+      } else if (!isHome && game.home_team_score > game.visitor_team_score) {
+        return (classes += "red");
+      } else if (!isHome && game.home_team_score < game.visitor_team_score) {
+        return (classes += "green");
+      }
+    }
+    return classes;
+  }
+
   return (
     <div className="game-block">
       <div className="team-score-block">
@@ -128,7 +144,7 @@ function ScoreCard({ gameInfo }) {
           <div className={renderLogo(gameInfo, false)}></div>
           <h2 className="team-name-text">{renderTeamName(gameInfo, false)}</h2>
         </div>
-        <div className="team-score">
+        <div className={toggleScoreClass(gameInfo, false)}>
           <h4>{renderScore(gameInfo, false)}</h4>
         </div>
       </div>
@@ -143,7 +159,7 @@ function ScoreCard({ gameInfo }) {
           <div className={renderLogo(gameInfo, true)}></div>
           <h2 className="team-name-text">{renderTeamName(gameInfo, true)}</h2>
         </div>
-        <div className="team-score">
+        <div className={toggleScoreClass(gameInfo, true)}>
           <h4>{renderScore(gameInfo, true)}</h4>
         </div>
       </div>
