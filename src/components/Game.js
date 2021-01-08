@@ -75,9 +75,9 @@ class Game extends Component {
   };
 
   formatDate = (date) => {
-    let newDate = new Date();
-    return (newDate =
-      date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate());
+    return (
+      date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
+    );
   };
 
   render() {

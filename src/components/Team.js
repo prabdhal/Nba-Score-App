@@ -40,7 +40,7 @@ class Team extends Component {
       this.state.teamName === "atl" ||
       this.state.teamName === "atlanta hawks"
     ) {
-      this.state.teamId = 1;
+      this.setState({ teamId: 1 });
     }
 
     if (
@@ -49,7 +49,7 @@ class Team extends Component {
       this.state.teamName === "bos" ||
       this.state.teamName === "boston celtics"
     ) {
-      this.state.teamId = 2;
+      this.setState({ teamId: 2 });
     }
 
     if (
@@ -58,7 +58,7 @@ class Team extends Component {
       this.state.teamName === "bkn" ||
       this.state.teamName === "brooklyn nets"
     ) {
-      this.state.teamId = 3;
+      this.setState({ teamId: 3 });
     }
 
     if (
@@ -67,7 +67,7 @@ class Team extends Component {
       this.state.teamName === "cha" ||
       this.state.teamName === "charlotte hornets"
     ) {
-      this.state.teamId = 4;
+      this.setState({ teamId: 4 });
     }
 
     if (
@@ -76,7 +76,7 @@ class Team extends Component {
       this.state.teamName === "chi" ||
       this.state.teamName === "chicago bulls"
     ) {
-      this.state.teamId = 5;
+      this.setState({ teamId: 5 });
     }
 
     if (
@@ -85,7 +85,7 @@ class Team extends Component {
       this.state.teamName === "cle" ||
       this.state.teamName === "cleveland cavaliers"
     ) {
-      this.state.teamId = 6;
+      this.setState({ teamId: 6 });
     }
 
     if (
@@ -94,7 +94,7 @@ class Team extends Component {
       this.state.teamName === "dal" ||
       this.state.teamName === "dallas mavericks"
     ) {
-      this.state.teamId = 7;
+      this.setState({ teamId: 7 });
     }
 
     if (
@@ -103,7 +103,7 @@ class Team extends Component {
       this.state.teamName === "den" ||
       this.state.teamName === "denver nuggets"
     ) {
-      this.state.teamId = 8;
+      this.setState({ teamId: 8 });
     }
 
     if (
@@ -112,7 +112,7 @@ class Team extends Component {
       this.state.teamName === "det" ||
       this.state.teamName === "detroit pistons"
     ) {
-      this.state.teamId = 9;
+      this.setState({ teamId: 9 });
     }
 
     if (
@@ -121,7 +121,7 @@ class Team extends Component {
       this.state.teamName === "gsw" ||
       this.state.teamName === "golden state warriors"
     ) {
-      this.state.teamId = 10;
+      this.setState({ teamId: 10 });
     }
 
     if (
@@ -130,7 +130,7 @@ class Team extends Component {
       this.state.teamName === "hou" ||
       this.state.teamName === "houston rockets"
     ) {
-      this.state.teamId = 11;
+      this.setState({ teamId: 11 });
     }
 
     if (
@@ -139,7 +139,7 @@ class Team extends Component {
       this.state.teamName === "ind" ||
       this.state.teamName === "indiana pacers"
     ) {
-      this.state.teamId = 12;
+      this.setState({ teamId: 12 });
     }
 
     if (
@@ -148,7 +148,7 @@ class Team extends Component {
       this.state.teamName === "lac" ||
       this.state.teamName === "los angeles clippers"
     ) {
-      this.state.teamId = 13;
+      this.setState({ teamId: 13 });
     }
 
     if (
@@ -157,7 +157,7 @@ class Team extends Component {
       this.state.teamName === "lal" ||
       this.state.teamName === "los angeles lakers"
     ) {
-      this.state.teamId = 14;
+      this.setState({ teamId: 14 });
     }
 
     if (
@@ -166,7 +166,7 @@ class Team extends Component {
       this.state.teamName === "mem" ||
       this.state.teamName === "memphis grizzlies"
     ) {
-      this.state.teamId = 15;
+      this.setState({ teamId: 15 });
     }
 
     if (
@@ -175,7 +175,7 @@ class Team extends Component {
       this.state.teamName === "mia" ||
       this.state.teamName === "miami heat"
     ) {
-      this.state.teamId = 16;
+      this.setState({ teamId: 16 });
     }
 
     if (
@@ -184,7 +184,7 @@ class Team extends Component {
       this.state.teamName === "mil" ||
       this.state.teamName === "milwaukee bucks"
     ) {
-      this.state.teamId = 17;
+      this.setState({ teamId: 17 });
     }
 
     if (
@@ -193,7 +193,7 @@ class Team extends Component {
       this.state.teamName === "min" ||
       this.state.teamName === "minnesota timberwolves"
     ) {
-      this.state.teamId = 18;
+      this.setState({ teamId: 18 });
     }
 
     if (
@@ -202,7 +202,7 @@ class Team extends Component {
       this.state.teamName === "nop" ||
       this.state.teamName === "new orleans pelicans"
     ) {
-      this.state.teamId = 19;
+      this.setState({ teamId: 19 });
     }
 
     if (
@@ -211,7 +211,7 @@ class Team extends Component {
       this.state.teamName === "nyk" ||
       this.state.teamName === "new york knicks"
     ) {
-      this.state.teamId = 20;
+      this.setState({ teamId: 20 });
     }
 
     if (
@@ -220,7 +220,7 @@ class Team extends Component {
       this.state.teamName === "okc" ||
       this.state.teamName === "oklahoma city thunder"
     ) {
-      this.state.teamId = 21;
+      this.setState({ teamId: 21 });
     }
 
     if (
@@ -229,7 +229,7 @@ class Team extends Component {
       this.state.teamName === "orl" ||
       this.state.teamName === "orlando magic"
     ) {
-      this.state.teamId = 22;
+      this.setState({ teamId: 22 });
     }
 
     if (
@@ -238,7 +238,7 @@ class Team extends Component {
       this.state.teamName === "phi" ||
       this.state.teamName === "philadelphia 76ers"
     ) {
-      this.state.teamId = 23;
+      this.setState({ teamId: 23 });
     }
 
     if (
@@ -247,7 +247,7 @@ class Team extends Component {
       this.state.teamName === "phx" ||
       this.state.teamName === "phoenix suns"
     ) {
-      this.state.teamId = 24;
+      this.setState({ teamId: 24 });
     }
 
     if (
@@ -256,7 +256,7 @@ class Team extends Component {
       this.state.teamName === "por" ||
       this.state.teamName === "portland trail blazers"
     ) {
-      this.state.teamId = 25;
+      this.setState({ teamId: 25 });
     }
 
     if (
@@ -265,7 +265,7 @@ class Team extends Component {
       this.state.teamName === "sac" ||
       this.state.teamName === "sacramento kings"
     ) {
-      this.state.teamId = 26;
+      this.setState({ teamId: 26 });
     }
 
     if (
@@ -274,7 +274,7 @@ class Team extends Component {
       this.state.teamName === "sas" ||
       this.state.teamName === "san antonia spurs"
     ) {
-      this.state.teamId = 27;
+      this.setState({ teamId: 27 });
     }
 
     if (
@@ -283,7 +283,7 @@ class Team extends Component {
       this.state.teamName === "tor" ||
       this.state.teamName === "toronto raptors"
     ) {
-      this.state.teamId = 28;
+      this.setState({ teamId: 28 });
     }
 
     if (
@@ -292,7 +292,7 @@ class Team extends Component {
       this.state.teamName === "uth" ||
       this.state.teamName === "utah jazz"
     ) {
-      this.state.teamId = 29;
+      this.setState({ teamId: 29 });
     }
 
     if (
@@ -301,7 +301,7 @@ class Team extends Component {
       this.state.teamName === "was" ||
       this.state.teamName === "washington wizards"
     ) {
-      this.state.teamId = 30;
+      this.setState({ teamId: 30 });
     }
     this.getTeam();
   };

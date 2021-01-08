@@ -7,19 +7,16 @@ class Player extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      playerBaseData: {},
-      playerId: null,
+      playerName: null,
       season: "2020",
-      playerStats: {},
-      activePlayersId: [{}],
-      activePlayersStats: [{}],
+      activePlayersIdList: [[]],
     };
   }
 
   // gets player id when form is submitted
   handleSubmit = (e) => {
     e.preventDefault();
-    this.getPlayerId();
+    this.getPlayerInformation();
     e.target[0].value = null;
   };
 
@@ -39,48 +36,80 @@ class Player extends Component {
     this.setState({ season: year });
   };
 
-  getPlayerId = () => {
+  getPlayerInformation = () => {
+    console.log("Runnning get player Info");
     axios
       .get(
         `https://www.balldontlie.io/api/v1/players?search=${this.state.playerName}`
       )
-      .then((res) => {
-        // find player based on the inputted name
-        if (res.data.data[0] === undefined) {
-          alert(
-            `This player did not exist during the ${this.state.season} season!`
-          );
-        } else if (res.data.data.length > 1) {
-          alert("Please specify the name more!");
-        } else {
-          this.setState({ playerId: res.data.data[0].id });
-          this.setState({ playerBaseData: res.data.data[0] });
-          this.getPlayerStats(res.data.data[0].id);
-        }
+      .then(async (res) => {
+        // get all neccessary player data
+        let data = res.data.data;
+        let newPlayerId = res.data.data[0].id;
+        let newPlayerInfo = res.data.data[0];
+        await this.getPlayerStats(newPlayerId)
+          .then((res) => {
+            console.log(res);
+
+            if (newPlayerInfo === undefined) {
+              alert(
+                `This player did not exist during the ${this.state.season} season!`
+              );
+            } else if (data.length > 1) {
+              alert("Please specify the name more!");
+            } else {
+              console.log(res);
+              if (res === null) return;
+
+              return this.addPlayerToList(newPlayerId, newPlayerInfo, res);
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
+  addPlayerToList = (playerId, playerInfo, playerStats) => {
+    // filter out duplicates
+    const newPlayerIdList = this.state.activePlayersIdList.filter(
+      (id) => id !== playerId
+    );
+    this.setState({
+      activePlayersIdList: [
+        ...newPlayerIdList,
+        { id: playerId, info: playerInfo, stats: playerStats },
+      ],
+    });
+    console.log(this.state.activePlayersIdList);
+  };
+
   getPlayerStats = (playerId) => {
-    axios
-      .get(
-        `https://www.balldontlie.io/api/v1/season_averages?season=${this.state.season}&player_ids[]=${playerId}`
-      )
-      .then((res) => {
-        console.log(res.data.data[0]);
-        if (res.data.data[0].season === undefined) return;
-        else {
-          this.setState({ playerStats: res.data.data[0] });
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        alert(
-          `${this.state.playerName} was not active during the ${this.state.season} season`
-        );
-      });
+    console.log(this.state.season);
+    console.log(playerId);
+    return Promise.resolve(
+      axios
+        .get(
+          `https://www.balldontlie.io/api/v1/season_averages?season=${this.state.season}&player_ids[]=${playerId}`
+        )
+        .then((res) => {
+          console.log(res.data.data[0]);
+          if (res.data.data[0].season === undefined) return;
+          else {
+            return res.data.data[0];
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          alert(
+            `${this.state.playerName} was not active during the ${this.state.season} season`
+          );
+          return null;
+        })
+    );
   };
 
   render() {
@@ -152,11 +181,17 @@ class Player extends Component {
         </form>
 
         <div className="player-container">
-          <PlayerBaseInfo playerBaseData={this.state.playerBaseData} />
-
-          <div className="basic-stats">
-            <PlayerStats playerStats={this.state.playerStats} />
-          </div>
+          {this.state.activePlayersIdList.map((player) => {
+            return (
+              <React.Fragment>
+                {console.log(player)}
+                <PlayerBaseInfo key={player.id} player={player} />
+                <div className="basic-stats">
+                  <PlayerStats key={player.id} player={player} />
+                </div>
+              </React.Fragment>
+            );
+          })}
         </div>
       </div>
     );

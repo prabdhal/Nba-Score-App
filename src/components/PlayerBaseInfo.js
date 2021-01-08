@@ -1,41 +1,45 @@
 import React from "react";
 
-function PlayerBaseInfo(playerBaseData) {
-  function renderPlayerImg(fName, lName) {
-    if (fName === null || lName === null) return "-";
+function PlayerBaseInfo({ player }) {
+  function renderPlayerImg(playerData) {
+    if (playerData === null || playerData === undefined) return "-";
+    console.log(playerData);
+    let fName = playerData.first_name;
+    let lName = playerData.last_name;
     let imgUrl = `https://nba-players.herokuapp.com/players/${lName}/${fName}`;
 
-    return <img src={imgUrl} height="75px" width="100px" />;
+    let fullName = `${fName} ${lName} image`;
+
+    return <img src={imgUrl} alt={fullName} height="75px" width="100px" />;
   }
 
   function renderName(playerData) {
-    if (playerData === null) return "-";
+    if (playerData === null || playerData === undefined) return "-";
     else {
-      return (
-        playerData.playerBaseData.first_name +
-        " " +
-        playerData.playerBaseData.last_name
-      );
+      return playerData.first_name + " " + playerData.last_name;
     }
   }
 
+  function renderPosition(playerData) {
+    if (playerData === null || playerData === undefined) return "-";
+    if (playerData.position === undefined) return null;
+    return playerData.position;
+  }
+
   function renderTeam(playerData) {
-    if (playerData === null) return "-";
-    if (playerData.playerBaseData.team === undefined) return null;
-    return playerData.playerBaseData.team.abbreviation;
+    if (playerData === null || playerData === undefined) return "-";
+    if (playerData.team === undefined) return null;
+    return playerData.team.abbreviation;
   }
 
   return (
     <div className="player-information-container">
-      {renderPlayerImg(
-        playerBaseData.playerBaseData.first_name,
-        playerBaseData.playerBaseData.last_name
-      )}
-      <h4 className="player-name-text">{renderName(playerBaseData)}</h4>
+      {renderPlayerImg(player.info)}
+      <h4 className="player-name-text">{renderName(player.info)}</h4>
       <span>
         <h5 className="player-information-text">
-          Position: {playerBaseData.playerBaseData.position} | Team:{" "}
-          {renderTeam(playerBaseData)}
+          Position: {renderPosition(player.info)} | Team:{" "}
+          {renderTeam(player.info)}
         </h5>
       </span>
     </div>

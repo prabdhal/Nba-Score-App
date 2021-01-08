@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 function ScoreCard({ gameInfo }) {
   function getFormattedDay(day) {
@@ -40,17 +40,6 @@ function ScoreCard({ gameInfo }) {
     if (game.id === null || game.is === undefined) return null;
     if (game.postseason) return "Playoffs";
     return "Regular";
-  }
-
-  function renderTeamCity(game, isHome) {
-    if (isHome) {
-      if (game.home_team === null || game.home_team === undefined) return null;
-      return game.home_team.city;
-    } else if (!isHome) {
-      if (game.visitor_team === null || game.visitor_team === undefined)
-        return null;
-      return game.visitor_team.city;
-    }
   }
 
   function renderTeamName(game, isHome) {
