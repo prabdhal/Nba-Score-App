@@ -38,7 +38,7 @@ function PlayerBaseInfo({ player, removePlayerFromList }) {
 
   return (
     <div className="player-information-container spaced-row">
-      <div>
+      <div className="player-border">
         {renderPlayerImg(player.info)}
         <h4 className="player-name-text">{renderName(player.info)}</h4>
         <span>
@@ -50,9 +50,10 @@ function PlayerBaseInfo({ player, removePlayerFromList }) {
       </div>
       <div>
         <button
-          onClick={() => handleCloseButton(player.id, player.stats.season)}
+          className="nba-close-btn"
+          onClick={() => handleCloseButton(player.id, player.averages.season)}
         >
-          Close
+          Remove
         </button>
       </div>
     </div>

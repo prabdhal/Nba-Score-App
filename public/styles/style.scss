@@ -2,12 +2,13 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 :root {
-  --primaryColor: lightblue;
-  --secondaryColor: lightgrey;
-  --complementaryColor: rgb(151, 151, 151);
+  --primaryColor: rgb(255, 255, 255);
+  --secondaryColor: rgb(0, 0, 0);
+  --complementaryColor: rgb(212, 212, 212);
   --largeFont: 1.5rem;
   --mediumFont: 1.3rem;
   --regularFont: 1rem;
@@ -23,8 +24,9 @@
 
 .App {
   height: 100%;
-  overflow-y: hidden;
-  background-color: var(--primaryColor);
+  min-height: 100vh;
+  background-color: var(--complementaryColor);
+  padding: 0 0 4% 0;
 }
 
 .main-bg {
@@ -47,6 +49,52 @@
   border: 2px solid var(--primaryColor);
   padding: 20px;
   margin: 20px;
+}
+
+form.nba-form {
+  margin: 50px auto;
+  text-align: center;
+}
+
+input.nba-input {
+  padding: 5px;
+}
+
+input.nba-input[type="text"] {
+  font-size: 1rem;
+}
+
+.select-box {
+  padding: 5px;
+}
+
+.nba-btn {
+  padding: 6px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 80px;
+}
+
+.spaced-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+div.nba-header {
+  font-size: 1.3rem;
+  padding: 10px;
+}
+
+.nba-close-btn {
+  padding: 5px 10px;
+  background-color: var(--complementaryColor);
+  color: var(--secondaryColor);
+  outline: 0;
+  font-weight: bold;
 }
 
 .w-500 {

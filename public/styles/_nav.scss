@@ -1,30 +1,31 @@
-.nav {
+.nba-nav {
   width: 100%;
   height: 75px;
   display: flex;
   flex-direction: row;
   margin: auto;
-  padding: 10px;
   justify-content: space-between;
   background-color: var(--secondaryColor);
 }
 
-.nav-logo {
+.nba-logo {
   text-align: center;
   margin: auto 0;
+  font-size: 1.5rem;
+  color: var(--primaryColor);
 }
 
-.nav-btns {
+.nba-nav-btns {
   display: flex;
   flex-direction: row;
-  margin-top: 1px;
+  margin-top: 11px;
 }
 
-.nav-btn {
-  width: 100%;
+.nba-nav-btn {
   height: 60px;
-  width: 75px;
+  width: 100px;
   padding: 5px;
+  font-size: 1.3rem;
   background-color: var(--primaryColor);
   outline: 0;
   border: 0;
@@ -35,10 +36,11 @@
   cursor: pointer;
 }
 
-.nav-btn:hover {
-  background-color: cyan;
+.nba-nav-btn:hover {
+  background-color: var(--complementaryColor);
 }
 
 .selected {
-  background-color: cyan;
+  background-color: var(--complementaryColor);
+  font-weight: bold;
 }

@@ -1,34 +1,6 @@
 import React from "react";
 
-function ScoreCard({ gameInfo }) {
-  function getFormattedDay(day) {
-    if (day < 10) return "" + 0 + day;
-    return day;
-  }
-
-  function getWeekDay(day) {
-    const weekdayAry = ["Mon", "Tue", "Wed", "Thurs", "Fri", "Sat", "Sun"];
-
-    return weekdayAry[day];
-  }
-
-  function getFormattedMonth(month) {
-    if (month < 10) return "" + 0 + month;
-    return month;
-  }
-
-  function renderDate(game) {
-    let gameDate = new Date(game.date);
-
-    let date =
-      getWeekDay(gameDate.getDay()) +
-      "., " +
-      getFormattedDay(gameDate.getDate()) +
-      "-" +
-      getFormattedMonth(gameDate.getMonth() + 1);
-    return date;
-  }
-
+function ScoreCard({ gameInfo, renderGameDate }) {
   function renderScore(game, isHome) {
     if (game.period === 0) return null;
     else if (isHome) return game.home_team_score;
@@ -36,7 +8,6 @@ function ScoreCard({ gameInfo }) {
   }
 
   function renderPostSeason(game) {
-    console.log(game.id);
     if (game.id === null || game.is === undefined) return null;
     if (game.postseason) return "Playoffs";
     return "Regular";
@@ -121,6 +92,10 @@ function ScoreCard({ gameInfo }) {
     }
   }
 
+  function handleRenderDate(game) {
+    return renderGameDate(game);
+  }
+
   function toggleScoreClass(game, isHome) {
     let classes = "team-score ";
     if (game.status === "Final") {
@@ -149,7 +124,7 @@ function ScoreCard({ gameInfo }) {
         </div>
       </div>
       <div className="game-information">
-        <div className="game-date">{renderDate(gameInfo)}</div>
+        <div className="game-date">{handleRenderDate(gameInfo)}</div>
         <div className="game-status">{gameInfo.status}</div>
         <div>{renderPostSeason(gameInfo)}</div>
         <div>{gameInfo.time}</div>

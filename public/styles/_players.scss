@@ -1,39 +1,15 @@
-form {
-  margin: 50px auto;
-  text-align: center;
-}
-
-input {
-  padding: 5px;
-}
-
-input[type="text"] {
-  font-size: 1rem;
-}
-
-.select-box {
-  padding: 5px;
-}
-
-.btn {
-  padding: 5px;
-}
-
-.row {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 80px;
-}
-
-.spaced-row {
-  display: flex;
-  justify-content: space-between;
-}
-
 .player-information-container {
   text-align: left;
   padding: 5px 10px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+  background-color: var(--primaryColor);
+  color: var(--secondaryColor);
+}
+
+.player-border {
+  padding: 5px;
 }
 
 .player-name-text {
@@ -51,8 +27,11 @@ input[type="text"] {
   font-size: var(--smallFont);
   margin: auto;
   color: white;
-  background-color: var(--primaryColor);
-  border: 2px solid var(--primaryColor);
+  background-color: var(--secondaryColor);
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  border-top: 2px double black;
   overflow-x: scroll;
 }
 
@@ -62,7 +41,7 @@ input[type="text"] {
   font-weight: 600;
 }
 
-.basic-stats-header {
+.basic-averages-header {
   text-align: center;
   font-size: var(--smallFont);
   color: var(--complementaryColor);
@@ -78,6 +57,7 @@ input[type="text"] {
 }
 ::-webkit-scrollbar-thumb:horizontal {
   background-color: var(--primaryColor);
+  border: 1px solid var(--primaryColor);
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:vertical {

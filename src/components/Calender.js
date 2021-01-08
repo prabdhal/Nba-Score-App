@@ -17,8 +17,9 @@ function Calender({ getSelectedDate }) {
   }
 
   return (
-    <div className="App">
+    <React.Fragment>
       <DatePicker
+        className="nba-input"
         selected={selectedDate}
         dateFormat="yyyy-MM-dd"
         onChange={(date) => handleSelectedDate(date)}
@@ -26,7 +27,7 @@ function Calender({ getSelectedDate }) {
         showYearDropdown
         scrollableMonthYearDropdown
       />
-    </div>
+    </React.Fragment>
   );
 }
 

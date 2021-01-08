@@ -4,12 +4,13 @@
           box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 :root {
-  --primaryColor: lightblue;
-  --secondaryColor: lightgrey;
-  --complementaryColor: rgb(151, 151, 151);
+  --primaryColor: rgb(255, 255, 255);
+  --secondaryColor: rgb(0, 0, 0);
+  --complementaryColor: rgb(212, 212, 212);
   --largeFont: 1.5rem;
   --mediumFont: 1.3rem;
   --regularFont: 1rem;
@@ -25,8 +26,9 @@
 
 .App {
   height: 100%;
-  overflow-y: hidden;
-  background-color: var(--primaryColor);
+  min-height: 100vh;
+  background-color: var(--complementaryColor);
+  padding: 0 0 4% 0;
 }
 
 .main-bg {
@@ -60,81 +62,16 @@
   margin: 20px;
 }
 
-.w-500 {
-  max-width: 500px;
-}
-
-.p-20 {
-  padding: 20px;
-}
-
-.nav {
-  width: 100%;
-  height: 75px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  margin: auto;
-  padding: 10px;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  background-color: var(--secondaryColor);
-}
-
-.nav-logo {
-  text-align: center;
-  margin: auto 0;
-}
-
-.nav-btns {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  margin-top: 1px;
-}
-
-.nav-btn {
-  width: 100%;
-  height: 60px;
-  width: 75px;
-  padding: 5px;
-  background-color: var(--primaryColor);
-  outline: 0;
-  border: 0;
-  margin: 4px 2px;
-  border-right: 1px solid black;
-  border-left: 1px solid black;
-  border-top: 1px solid black;
-  cursor: pointer;
-}
-
-.nav-btn:hover {
-  background-color: cyan;
-}
-
-.selected {
-  background-color: cyan;
-}
-
-form {
+form.nba-form {
   margin: 50px auto;
   text-align: center;
 }
 
-input {
+input.nba-input {
   padding: 5px;
 }
 
-input[type="text"] {
+input.nba-input[type="text"] {
   font-size: 1rem;
 }
 
@@ -142,8 +79,8 @@ input[type="text"] {
   padding: 5px;
 }
 
-.btn {
-  padding: 5px;
+.nba-btn {
+  padding: 6px;
 }
 
 .row {
@@ -167,9 +104,98 @@ input[type="text"] {
           justify-content: space-between;
 }
 
+div.nba-header {
+  font-size: 1.3rem;
+  padding: 10px;
+}
+
+.nba-close-btn {
+  padding: 5px 10px;
+  background-color: var(--complementaryColor);
+  color: var(--secondaryColor);
+  outline: 0;
+  font-weight: bold;
+}
+
+.w-500 {
+  max-width: 500px;
+}
+
+.p-20 {
+  padding: 20px;
+}
+
+.nba-nav {
+  width: 100%;
+  height: 75px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: auto;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: var(--secondaryColor);
+}
+
+.nba-logo {
+  text-align: center;
+  margin: auto 0;
+  font-size: 1.5rem;
+  color: var(--primaryColor);
+}
+
+.nba-nav-btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-top: 11px;
+}
+
+.nba-nav-btn {
+  height: 60px;
+  width: 100px;
+  padding: 5px;
+  font-size: 1.3rem;
+  background-color: var(--primaryColor);
+  outline: 0;
+  border: 0;
+  margin: 4px 2px;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+  cursor: pointer;
+}
+
+.nba-nav-btn:hover {
+  background-color: var(--complementaryColor);
+}
+
+.selected {
+  background-color: var(--complementaryColor);
+  font-weight: bold;
+}
+
 .player-information-container {
   text-align: left;
   padding: 5px 10px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+  background-color: var(--primaryColor);
+  color: var(--secondaryColor);
+}
+
+.player-border {
+  padding: 5px;
 }
 
 .player-name-text {
@@ -192,8 +218,11 @@ input[type="text"] {
   font-size: var(--smallFont);
   margin: auto;
   color: white;
-  background-color: var(--primaryColor);
-  border: 2px solid var(--primaryColor);
+  background-color: var(--secondaryColor);
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  border-top: 2px double black;
   overflow-x: scroll;
 }
 
@@ -203,7 +232,7 @@ input[type="text"] {
   font-weight: 600;
 }
 
-.basic-stats-header {
+.basic-averages-header {
   text-align: center;
   font-size: var(--smallFont);
   color: var(--complementaryColor);
@@ -221,6 +250,7 @@ input[type="text"] {
 
 ::-webkit-scrollbar-thumb:horizontal {
   background-color: var(--primaryColor);
+  border: 1px solid var(--primaryColor);
   border-radius: 10px;
 }
 
@@ -256,19 +286,19 @@ input[type="text"] {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background-color: var(--secondaryColor);
-  -webkit-box-shadow: inset 1.5px 1.5px 5px black, inset -1.5px -1.5px 5px black;
-          box-shadow: inset 1.5px 1.5px 5px black, inset -1.5px -1.5px 5px black;
+  background-color: var(--primaryColor);
+  -webkit-box-shadow: inset 1px 1px 3px black, inset -1px -1px 3px black;
+          box-shadow: inset 1px 1px 3px black, inset -1px -1px 3px black;
   padding: 20px;
   margin: 20px auto;
 }
 
 .team-score-block {
-  width: 160px;
+  width: 120px;
 }
 
 .game-information {
-  width: 130px;
+  width: 210px;
   padding: 0 10px;
 }
 
@@ -278,6 +308,7 @@ input[type="text"] {
 
 .game-status {
   margin-top: 10px;
+  font-weight: bold;
 }
 
 .team-logo {

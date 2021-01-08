@@ -14,18 +14,11 @@ class Game extends Component {
         "-" +
         today.getDate();
     this.state = {
-      season: "2020",
-      playerStats: {},
-      gameId: {},
       gameInfos: [{}],
-      homeTeams: {},
-      homeTeamScores: {},
-      awayTeams: {},
-      awayTeamScores: {},
       selectDate: date,
-      time: Date.now(),
     };
   }
+
   componentDidMount() {
     this.interval = setInterval(
       () => this.setState({ time: Date.now() }, () => this.getGames()),
@@ -43,8 +36,6 @@ class Game extends Component {
       )
       .then(async (res) => {
         console.log(res.data.data);
-        console.log(res.data.data.home_team);
-        console.log(res.data.data.visitor_team);
         await this.setState({ gameInfos: res.data.data });
       })
       .catch((err) => {
@@ -74,29 +65,113 @@ class Game extends Component {
     return parseFloat(time);
   };
 
+  getFormattedDay = (day) => {
+    if (day < 10) return "" + 0 + day;
+    return day;
+  };
+
+  getWeekDay = (day, full) => {
+    let weekdayAry = ["Mon", "Tue", "Wed", "Thurs", "Fri", "Sat", "Sun"];
+    if (full) {
+      weekdayAry = [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ];
+    }
+
+    return weekdayAry[day];
+  };
+
+  getMonthDay = (month) => {
+    let monthAry = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "Novemeber",
+      "December",
+    ];
+
+    return monthAry[month];
+  };
+
+  getFormattedMonth = (month) => {
+    if (month < 10) return "" + 0 + month;
+    return month;
+  };
+
   formatDate = (date) => {
     return (
       date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
     );
   };
 
+  renderGameDate = (game) => {
+    let newDate = "" + game.date;
+    let updatedDate = newDate.replace(/-/g, "/").replace(/T.+/, "");
+    let gameDate = new Date(updatedDate);
+
+    let date =
+      this.getWeekDay(gameDate.getDay(), false) +
+      "., " +
+      this.getFormattedDay(gameDate.getDate()) +
+      "-" +
+      this.getFormattedMonth(gameDate.getMonth() + 1);
+    return date;
+  };
+
+  renderFullDate = (game) => {
+    if (game === null || game === undefined) return;
+    let newDate = "" + game.date;
+    let updatedDate = newDate.replace(/-/g, "/").replace(/T.+/, "");
+    let gameDate = new Date(updatedDate);
+
+    let date =
+      this.getWeekDay(gameDate.getDay(), true) +
+      ", " +
+      this.getMonthDay(gameDate.getMonth()) +
+      " " +
+      this.getFormattedDay(gameDate.getDate() + " " + gameDate.getFullYear());
+    return date;
+  };
+
   render() {
     return (
       <div className="center">
-        <form onSubmit={this.handleSubmit}>
+        <form className="nba-form" onSubmit={this.handleSubmit}>
           <span>
-            <div>Select a date</div>
+            <div className="nba-header">Select a date</div>
             <Calender getSelectedDate={this.getSelectedDate} />
           </span>
         </form>
 
         <main className="games-today center">
+          <h3 className="nba-header">
+            {this.renderFullDate(this.state.gameInfos[0])}
+          </h3>
           {this.state.gameInfos
             .sort((a, b) =>
               this.getGameTime(a) > this.getGameTime(b) ? 1 : -1
             )
             .map((gameInfo) => {
-              return <ScoreCard key={gameInfo.id} gameInfo={gameInfo} />;
+              return (
+                <ScoreCard
+                  key={gameInfo.id}
+                  gameInfo={gameInfo}
+                  renderGameDate={this.renderGameDate}
+                />
+              );
             })}
         </main>
       </div>
