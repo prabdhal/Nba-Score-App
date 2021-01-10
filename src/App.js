@@ -36,7 +36,7 @@ class App extends Component {
   render() {
     const { showHidePlayer, showHideTeam, showHideGame } = this.state;
     return (
-      <div className="App">
+      <div className="NBA-App">
         <nav className="nba-nav">
           <h3 className="nba-logo">Basketball Score App</h3>
           <div className="nba-nav-btns">

@@ -1,6 +1,6 @@
 import React from "react";
 
-function ScoreCard({ gameInfo, renderGameDate }) {
+function ScoreCard({ gameInfo, renderGameDate1 }) {
   function renderScore(game, isHome) {
     if (game.period === 0) return null;
     else if (isHome) return game.home_team_score;
@@ -93,7 +93,7 @@ function ScoreCard({ gameInfo, renderGameDate }) {
   }
 
   function handleRenderDate(game) {
-    return renderGameDate(game);
+    return renderGameDate1(game);
   }
 
   function toggleScoreClass(game, isHome) {

@@ -5,14 +5,14 @@
   flex-direction: row;
   margin: auto;
   justify-content: space-between;
-  background-color: var(--secondaryColor);
+  background-color: var(--secondaryColorNBA);
 }
 
 .nba-logo {
   text-align: center;
   margin: auto 0;
   font-size: 1.5rem;
-  color: var(--primaryColor);
+  color: var(--primaryColorNBA);
 }
 
 .nba-nav-btns {
@@ -26,7 +26,7 @@
   width: 100px;
   padding: 5px;
   font-size: 1.3rem;
-  background-color: var(--primaryColor);
+  background-color: var(--primaryColorNBA);
   outline: 0;
   border: 0;
   margin: 4px 2px;
@@ -37,10 +37,10 @@
 }
 
 .nba-nav-btn:hover {
-  background-color: var(--complementaryColor);
+  background-color: var(--complementaryColorNBA);
 }
 
 .selected {
-  background-color: var(--complementaryColor);
+  background-color: var(--complementaryColorNBA);
   font-weight: bold;
 }

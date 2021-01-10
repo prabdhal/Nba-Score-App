@@ -71,16 +71,16 @@ class Game extends Component {
   };
 
   getWeekDay = (day, full) => {
-    let weekdayAry = ["Mon", "Tue", "Wed", "Thurs", "Fri", "Sat", "Sun"];
+    let weekdayAry = ["Sun", "Mon", "Tue", "Wed", "Thurs", "Fri", "Sat"];
     if (full) {
       weekdayAry = [
+        "Sunday",
         "Monday",
         "Tuesday",
         "Wednesday",
         "Thursday",
         "Friday",
         "Saturday",
-        "Sunday",
       ];
     }
 
@@ -123,7 +123,20 @@ class Game extends Component {
     let gameDate = new Date(updatedDate);
 
     let date =
-      this.getWeekDay(gameDate.getDay(), false) +
+      this.getWeekDay(gameDate.getDay() + 1, false) +
+      "., " +
+      this.getFormattedDay(gameDate.getDate()) +
+      "-" +
+      this.getFormattedMonth(gameDate.getMonth() + 1);
+    return date;
+  };
+
+  renderGameDate1 = (game) => {
+    let newDate = "" + game.date;
+    let gameDate = new Date(newDate);
+
+    let date =
+      this.getWeekDay(gameDate.getDay() + 1, false) +
       "., " +
       this.getFormattedDay(gameDate.getDate()) +
       "-" +
@@ -148,7 +161,7 @@ class Game extends Component {
 
   render() {
     return (
-      <div className="center">
+      <div className="nba-center">
         <form className="nba-form" onSubmit={this.handleSubmit}>
           <span>
             <div className="nba-header">Select a date</div>
@@ -169,7 +182,7 @@ class Game extends Component {
                 <ScoreCard
                   key={gameInfo.id}
                   gameInfo={gameInfo}
-                  renderGameDate={this.renderGameDate}
+                  renderGameDate1={this.renderGameDate1}
                 />
               );
             })}

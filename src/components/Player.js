@@ -128,7 +128,7 @@ class Player extends Component {
 
   render() {
     return (
-      <div className="center">
+      <div className="nba-center">
         <form className="nba-form" onSubmit={this.handleSubmit}>
           <span>
             <div className="nba-header">Compare Player Stats</div>
